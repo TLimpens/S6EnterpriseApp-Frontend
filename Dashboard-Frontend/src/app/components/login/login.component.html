@@ -1,0 +1,19 @@
+<mat-card class="LogInCard">
+  <form class="loginForm">
+      <div class="row justify-content-center">
+        <mat-form-field class="col-9">
+          <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+        </mat-form-field>
+      </div>
+      <div class="row justify-content-center">
+        <mat-form-field class="col-9">
+          <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+        </mat-form-field>
+      </div>
+      <div class="row justify-content-center">
+        <mat-card-actions>
+          <button class="myButton">Log in</button>
+        </mat-card-actions>
+      </div>
+  </form>
+</mat-card>
