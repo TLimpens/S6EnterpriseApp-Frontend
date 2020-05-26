@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import {User} from '../classes/user';
-import {HttpClient} from '@angular/common/http';
+import {User} from '../models/user';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {map} from 'rxjs/operators';
+import {Shift} from '../models/shift';
+import {UserResource} from '../recources/userResource';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,19 +20,54 @@ export class RESTcallsService {
   }
 
   getUsers() {
-    return this.http.get('https://jsonplaceholder.typicode.com/users');
+    const params = new HttpParams();
+    const options = { params };
+
+    return this.http.get<User[]>(`https://localhost:44376/}`, options).pipe(
+      map(dataArray => dataArray.map(data => new User().deserialize(data))));
   }
 
-  getUser(id: number) {
-    return this.http.get('https://jsonplaceholder.typicode.com/users/' + id);
+  getUser(id) {
+    const params = new HttpParams();
+    params.append('id', id);
+    const options = { params };
+
+    return this.http.get<Shift>(`https://localhost:44376//${id}`, options).pipe(
+      map(data => new User().deserialize(data)));
   }
 
-  getAllShifts() {
-    return this.http.get('https://localhost:5030/api/shifts/getallshifts');
+  getUserResources() {
+    const params = new HttpParams();
+    const options = { params };
+
+    return this.http.get<UserResource[]>(`https://localhost:44376/}`, options).pipe(
+      map(dataArray => dataArray.map(data => new UserResource().deserialize(data))));
   }
 
-  getShift(id: number) {
-    return this.http.get('https://localhost:5030/api/shifts/getshift/' + id);
+  getUserResource(id): Observable<UserResource> {
+    const params = new HttpParams();
+    params.append('id', id);
+    const options = { params };
+
+    return this.http.get<UserResource>(`https://localhost:44376//${id}`, options).pipe(
+      map(data => new UserResource().deserialize(data)));
+  }
+
+  getAllShifts(): Observable<Shift[]> {
+    const params = new HttpParams();
+    const options = { params };
+
+    return this.http.get<Shift[]>(`https://localhost:44376/api/shifts/getshifts}`, options).pipe(
+      map(dataArray => dataArray.map(data => new Shift().deserialize(data))));
+  }
+
+  getShift(id): Observable<Shift> {
+    const params = new HttpParams();
+    params.append('id', id);
+    const options = { params };
+
+    return this.http.get<Shift>(`https://localhost:44376/api/shifts/getshift/${id}`, options).pipe(
+      map(data => new Shift().deserialize(data)));
   }
 
 }

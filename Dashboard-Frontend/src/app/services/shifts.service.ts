@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {User} from '../classes/user';
+import {User} from '../models/user';
 import {HttpClient} from '@angular/common/http';
 import {RESTcallsService} from './restcalls.service';
 

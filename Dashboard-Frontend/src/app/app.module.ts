@@ -13,12 +13,13 @@ import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './components/login/login.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RESTcallsService} from './services/restcalls.service';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ShiftsComponent } from './components/shifts/shifts.component';
+import {AppRoutingModule} from './app-routing/app-routing.module';
 
 
 @NgModule({
@@ -43,6 +44,8 @@ import { ShiftsComponent } from './components/shifts/shifts.component';
     FormsModule,
     HttpClientModule,
     MatButtonToggleModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [RESTcallsService],
   bootstrap: [AppComponent]

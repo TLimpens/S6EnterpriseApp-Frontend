@@ -1,19 +1,21 @@
-<mat-card class="LogInCard">
-  <form class="loginForm">
-      <div class="row justify-content-center">
-        <mat-form-field class="col-9">
-          <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+<div class="card-main">
+  <ng-container>
+    <form [formGroup]="loginForm" (ngSubmit)="logIn()">
+      <mat-card class="card-form">
+
+        <mat-form-field class="form-field">
+          <input type="text" placeholder="Username" aria-label="usernameInput" matInput formControlName="username">
         </mat-form-field>
-      </div>
-      <div class="row justify-content-center">
-        <mat-form-field class="col-9">
-          <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+
+        <mat-form-field class="form-field">
+          <input type="password" placeholder="Password" aria-label="passwordInput" matInput formControlName="password">
         </mat-form-field>
-      </div>
-      <div class="row justify-content-center">
-        <mat-card-actions>
-          <button class="myButton">Log in</button>
+
+        <mat-card-actions class="log-in-button">
+          <button type="submit" mat-raised-button color="warn">Login</button>
         </mat-card-actions>
-      </div>
-  </form>
-</mat-card>
+
+      </mat-card>
+    </form>
+  </ng-container>
+</div>
