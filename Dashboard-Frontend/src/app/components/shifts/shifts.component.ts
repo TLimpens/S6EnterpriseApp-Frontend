@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ShiftsService} from '../../services/shifts.service';
+import {AuthService} from '../../services/authService';
+import {Shift} from '../../models/shift';
 
 @Component({
   selector: 'app-shifts',
@@ -8,16 +10,9 @@ import {ShiftsService} from '../../services/shifts.service';
 })
 export class ShiftsComponent implements OnInit {
 
-  constructor(private shiftService: ShiftsService) { }
-
-  test: string;
+  @Input() shift: Shift;
 
   ngOnInit(): void {
-
-    this.test = this.shiftService.getShift(4).toString();
-
-    console.log(this.test);
-
   }
 
 }

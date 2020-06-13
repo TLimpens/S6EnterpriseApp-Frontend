@@ -23,8 +23,7 @@ export class AuthService {
   }
 
   public generateAuthHeader(): HttpHeaders {
-    const headers = new HttpHeaders().set('token', this.currentUser.token);
-    return headers;
+    return new HttpHeaders().set('Authorization', this.currentUser.token);
   }
 
   postUserLogIn(user): Observable<User> {

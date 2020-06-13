@@ -37,10 +37,13 @@ export class LoginComponent implements OnInit {
   }
 
   handleResponse(data) {
-    console.log('response', data);
-    this.authService.currentUser = data;
-    this.authService.createSession();
-    this.router.navigate(['shifts']);
+    if (data.id !== 0) {
+      this.authService.currentUser = data;
+      this.authService.createSession();
+      this.router.navigate(['shifts']);
+    } else {
+      this.handleError(data);
+    }
   }
 
   handleError(data) {

@@ -20,6 +20,8 @@ import {RESTcallsService} from './services/restcalls.service';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ShiftsComponent } from './components/shifts/shifts.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
+import { HoursComponent } from './components/hours/hours.component';
+import { ShiftOverviewComponent } from './components/shift-overview/shift-overview.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
     LoginComponent,
     UserListComponent,
     ShiftsComponent,
+    HoursComponent,
+    ShiftOverviewComponent,
   ],
   imports: [
     BrowserModule,

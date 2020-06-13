@@ -1,0 +1,9 @@
+<div *ngIf="dataLoaded">
+
+  <h1> My scheduled shifts </h1>
+
+  <div *ngFor="let shift of loadedShifts">
+    <app-shifts [shift]="shift"></app-shifts>
+  </div>
+</div>
+

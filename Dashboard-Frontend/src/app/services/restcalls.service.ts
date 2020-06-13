@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 import {Shift} from '../models/shift';
 import {UserResource} from '../recources/userResource';
 import {Observable} from 'rxjs';
+import {AuthService} from './authService';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class RESTcallsService {
 
   domain: 'https://jsonplaceholder.typicode.com/users';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   getRequest(parameter: string) {
       return this.http.get('https://jsonplaceholder.typicode.com/' + parameter).subscribe();
@@ -64,10 +65,14 @@ export class RESTcallsService {
   getShift(id): Observable<Shift> {
     const params = new HttpParams();
     params.append('id', id);
-    const options = { params };
+
+    const headers = this.authService.generateAuthHeader();
+    const options = { params, headers };
 
     return this.http.get<Shift>(`https://localhost:44376/api/shifts/getshift/${id}`, options).pipe(
       map(data => new Shift().deserialize(data)));
   }
+
+
 
 }
