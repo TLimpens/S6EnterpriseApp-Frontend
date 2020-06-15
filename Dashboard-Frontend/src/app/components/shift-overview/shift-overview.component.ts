@@ -13,18 +13,29 @@ export class ShiftOverviewComponent implements OnInit {
 
   constructor(private shiftService: ShiftsService, private authService: AuthService) { }
 
-  loadedShifts: Shift[] = [];
-  dataLoaded = false;
+  myShifts: Shift[] = [];
+  allShifts: Shift[] = [];
+  myDataLoaded = false;
+  allDataLoaded = false;
 
   ngOnInit(): void {
 
     this.shiftService.getShiftsForUser(this.authService.currentUser.id).pipe(
       finalize(() => {
-        this.dataLoaded = true;
+        this.myDataLoaded = true;
       })
     ).subscribe(data => {
-      this.loadedShifts = data ;
+      this.myShifts = data ;
     }
+    );
+
+    this.shiftService.getAllUpcommingShifts().pipe(
+      finalize(() => {
+        this.allDataLoaded = true;
+      })
+    ).subscribe(data => {
+        this.allShifts = data ;
+      }
     );
   }
 

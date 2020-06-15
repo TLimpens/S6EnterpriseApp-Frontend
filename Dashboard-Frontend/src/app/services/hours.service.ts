@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {RESTcallsService} from './restcalls.service';
 import {Observable} from 'rxjs';
 import {AuthService} from './authService';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class HoursService {
     const headers = this.authService.generateAuthHeader();
     const options = { params, headers };
 
-    return this.http.get<number>(`https://localhost:44376/api/hours/getMontlyWorkedHoursForUser/${id}`, options);
+    return this.http.get<number>(`${environment.api.base}hours/getMontlyWorkedHoursForUser/${id}`, options);
   }
 
   getMontlyScheduledHoursForUser(id): Observable<number> {
@@ -28,7 +29,7 @@ export class HoursService {
     const headers = this.authService.generateAuthHeader();
     const options = { params, headers };
 
-    return this.http.get<number>(`https://localhost:44376/api/hours/getMontlyScheduledHoursForUser/${id}`, options);
+    return this.http.get<number>(`${environment.api.base}hours/getMontlyScheduledHoursForUser/${id}`, options);
   }
 
 }

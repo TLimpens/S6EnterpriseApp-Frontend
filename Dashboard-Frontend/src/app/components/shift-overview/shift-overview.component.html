@@ -1,9 +1,26 @@
-<div *ngIf="dataLoaded">
 
-  <h1> My scheduled shifts </h1>
 
-  <div *ngFor="let shift of loadedShifts">
-    <app-shifts [shift]="shift"></app-shifts>
+<div class="container">
+  <div class="row justify-content-between">
+    <div class="col-xs-6">
+      <div *ngIf="myDataLoaded">
+
+        <h1> My scheduled shifts </h1>
+
+        <div *ngFor="let shift of myShifts">
+          <app-shifts [shift]="shift"></app-shifts>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div *ngIf="allDataLoaded">
+
+        <h1> All upcomming shifts shifts </h1>
+
+        <div *ngFor="let shift of allShifts">
+          <app-shifts [shift]="shift"></app-shifts>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-

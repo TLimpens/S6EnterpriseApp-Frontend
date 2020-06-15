@@ -29,19 +29,6 @@ export class UserService {
     return tempusers;
   }
 
-  getUserResources(): User[] {
-    const tempusers = [];
-    this.REST.getUserResources().subscribe(data => {
-        for (let i = 0; i < (data as UserResource[]).length; i++) {
-          tempusers.push(data[i]);
-          console.log('data', data[i]);
-        }
-      }
-    );
-    console.log('tempusres', tempusers);
-    return tempusers;
-  }
-
   getUser(id: number): User {
     this.user = new User();
 
@@ -54,18 +41,4 @@ export class UserService {
     return this.user;
   }
 
-  getUserResource(id: number): UserResource {
-    const userResource = {} as UserResource;
-
-    this.REST.getUserResource(id).subscribe(data => {
-
-        console.log('data', (data as UserResource).id);
-
-        userResource.id = (data as UserResource).id;
-        userResource.name = (data as UserResource).name;
-      }
-    );
-    console.log('tempusres', userResource);
-    return userResource;
-  }
 }

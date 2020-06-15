@@ -6,6 +6,7 @@ import {Shift} from '../models/shift';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AuthService} from './authService';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,16 @@ export class ShiftsService {
 
     const options = { params, headers };
 
-    return this.http.get<Shift[]>(`https://localhost:44376/api/shifts/getshiftsforuser/${userId}`, options).pipe(
+    return this.http.get<Shift[]>(`${environment.api.base}shifts/getshiftsforuser/${userId}`, options).pipe(
+      map(dataArray => dataArray.map(data => new Shift().deserialize(data))));
+  }
+
+  getAllUpcommingShifts(): Observable<Shift[]> {
+    const headers = this.authService.generateAuthHeader();
+
+    const options = { headers };
+
+    return this.http.get<Shift[]>(`${environment.api.base}shifts/getallshifts`, options).pipe(
       map(dataArray => dataArray.map(data => new Shift().deserialize(data))));
   }
 
