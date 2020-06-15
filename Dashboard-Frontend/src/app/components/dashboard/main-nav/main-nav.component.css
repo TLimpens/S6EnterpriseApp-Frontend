@@ -1,14 +1,35 @@
-.sidenav-container {
-  height: 100%;
+.main-nav {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
+.navbar-rightside {
+  display: flex;
+  justify-content: space-between;
 }
 
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
+.language-buttons {
+  margin-right: 20px;
   z-index: 1;
 }
 
+.logout-button {
+  transform: translateY(8px);
+}
+
+.mat-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-logo-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.toolbar-buttons {
+  transform: translateY(8px);
+}
+
+.down {
+  transform: translateY(9px);
+}
