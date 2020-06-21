@@ -32,11 +32,11 @@ export class AuthService {
   }
 
   createSession() {
-    this.cookieService.set('session', JSON.stringify(this.currentUser), 1, '/', environment.cookie.domain);
+    this.cookieService.set('session', JSON.stringify(this.currentUser), 1, '/', environment.cookie.domain, true, 'Lax');
   }
 
   deleteSession() {
-    this.cookieService.delete('session');
+    this.cookieService.delete('session', '/', environment.cookie.domain, true, 'Lax');
   }
 
   checkUserSession() {
